@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thai Food Softpower | หน้าหลัก</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;700;800&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="fa-solid fa-utensils"></i> THAI FOOD 
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">หน้าหลัก</a></li>
+        <li><a href="subpage1.html">รสชาติไทย</a></li>
+        <li><a href="subpage2.html">เส้นทาง Softpower </a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <header class="hero" id="hero">
+  <div class="container">
+    <div class="eyebrow">
+      <i class="fa-solid fa-fire-flame-curry"></i> ครัวไทยสู่ครัวโลก — THAI CUISINE
+    </div>
+    <h1>สตรีทฟู้ดไทย สู่เวทีโลก</h1>
+    <p>สัมผัสเสน่ห์รสชาติกลมกล่อม 5 รส เอกลักษณ์ทางวัฒนธรรมอาหารที่เป็นมรดกทางปัญญา มัดใจคนทั่วโลกจนยกให้เป็นอาหารยอดนิยมระดับสากล</p>
+    <div class="btn-group">
+      <a href="#menu" class="btn"><i class="fa-solid fa-bowl-food"></i> สำรวจเมนูยอดฮิต</a>
+      <a href="#quiz" class="btn ghost"><i class="fa-solid fa-dice"></i> สุ่มเมนูอาหารวันนี้</a>
+    </div>
+  </div>
+</header>
+
+  <!-- Flavor Strip -->
+  <section class="block" id="flavors">
+    <div class="container">
+      <div class="section-title">
+        <h2>มรดกแห่งรสชาติ (4 Core Flavors)</h2>
+        <p>หัวใจสำคัญของอาหารไทยคือความสมดุลและความจัดจ้านที่ลงตัว คลิกเพื่อค้นหารสชาติโปรดของคุณ</p>
+      </div>
+
+      <div class="flavors">
+        <div class="flavor f-spicy" onclick="filterByFlavor('เผ็ด')">
+          <div class="big">เผ็ด</div>
+          <div class="desc">กระตุ้นลิ้น ร้อนแรงจากพริกขี้หนูสดและพริกแห้ง</div>
+          <span class="hint">คลิกดูเมนูเผ็ด</span>
+        </div>
+        <div class="flavor f-sour" onclick="filterByFlavor('เปรี้ยว')">
+          <div class="big">เปรี้ยว</div>
+          <div class="desc">สดชื่น หอมกลิ่นมะนาวแท้ มะขามเปียก และส้มซ่า</div>
+          <span class="hint">คลิกดูเมนูเปรี้ยว</span>
+        </div>
+        <div class="flavor f-sweet" onclick="filterByFlavor('หวาน')">
+          <div class="big">หวาน</div>
+          <div class="desc">นุ่มนวล กลมกล่อมจากน้ำตาลมะพร้าวและกะทิสด</div>
+          <span class="hint">คลิกดูเมนูหวาน</span>
+        </div>
+        <div class="flavor f-salty" onclick="filterByFlavor('เค็ม')">
+          <div class="big">เค็ม</div>
+          <div class="desc">หอมละมุนด้วยน้ำปลาแท้ กะปิต่างหวัด และเกลือสินเธาว์</div>
+          <span class="hint">คลิกดูเมนูเค็ม</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Randomizer Widget -->
+  <section class="block" id="quiz" style="background: rgba(242, 169, 0, 0.08);">
+    <div class="container">
+      <div class="randomizer-box">
+        <h3><i class="fa-solid fa-wand-magic-sparkles"></i> วันนี้กินอะไรดี? (Thai Dish Randomizer)</h3>
+        <p style="color: var(--muted); margin-bottom: 20px;">ไม่รู้จะสั่งอะไรดีใช่ไหม? ให้ระบบสุ่มเมนูอาหารไทยแสนอร่อยตามอารมณ์ของคุณวันนี้!</p>
+        <button class="btn" onclick="randomizeDish()">
+          <i class="fa-solid fa-shuffle"></i> สุ่มเมนูเด็ดทันที!
+        </button>
+
+        <div class="randomizer-result" id="randomResult">
+          <h4 id="randomTitle" style="font-size: 1.4rem; color: var(--red); font-family: 'Prompt', sans-serif;"></h4>
+          <p id="randomDesc" style="margin-top: 6px; color: var(--muted);"></p>
+          <div id="randomTags" class="tags" style="justify-content: center; margin-top: 12px;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dish Explorer -->
+  <section class="block" id="menu">
+    <div class="container">
+      <div class="section-title">
+        <h2> เมนูสร้างชื่อ ซอฟต์พาวเวอร์ไทย</h2>
+        <p>คัดสรรเมนูยอดนิยมขวัญใจชาวต่างชาติและคนไทย รสชาติที่เป็นเอกลักษณ์ส่งออกวัฒนธรรมไทย</p>
+      </div>
+
+      <div class="filter-tabs">
+        <button class="tab-btn active" onclick="filterDishes('all', this)">ทั้งหมด</button>
+        <button class="tab-btn" onclick="filterDishes('soup', this)">ต้ม & แกง</button>
+        <button class="tab-btn" onclick="filterDishes('fry', this)">ผัด & ทอด</button>
+        <button class="tab-btn" onclick="filterDishes('salad', this)">ยำ & ส้มตำ</button>
+        <button class="tab-btn" onclick="filterDishes('dessert', this)">ของหวาน</button>
+      </div>
+
+      <div class="dish-container" id="dishList"></div>
+    </div>
+  </section>
+
+  <!-- Quote Section -->
+  <section class="quote">
+    <div class="container">
+      <p>"อาหารไทยไม่ใช่แค่การประทังชีวิต แต่คือการถ่ายทอดศิลปะ วัฒนธรรม และวิถีชีวิตความอบอุ่นของคนไทยลงไปในทุกๆ จาน"</p>
+      <small>— เอกลักษณ์ซอฟต์พาวเวอร์ไทยบนเวทีโลก —</small>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p style="font-family: 'Prompt'; font-weight: 700; font-size: 1.2rem; color: var(--gold);">THAI FOOD SOFTPOWER</p>
+      <p>© 2026 เว็บไซต์ส่งเสริมและประชาสัมพันธ์วัฒนธรรมอาหารไทยสู่ระดับสากล</p>
+      <div>
+        <a href="index.html">หน้าหลัก</a> |
+        <a href="subpage1.html">รสชาติไทย</a> |
+        <a href="subpage2.html">เส้นทาง Softpower</a>
+      </div>
+      <div class="social-links">
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" id="dishModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-body" id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // ชุดข้อมูลอาหาร (กำหนด image สำหรับรูปภาพจริง)
+    const dishesData = [
+      {
+        id: 'tomyum',
+        name: 'ต้มยำกุ้ง (Tom Yum Goong)',
+        category: 'soup',
+        flavor: 'เปรี้ยว',
+        spice: '🌶️🌶️🌶️ (เผ็ดปานกลาง-มาก)',
+        image: 'tomyum.jpg',
+        desc: 'ต้มยำกุ้งรสเลิศ เอกลักษณ์ต้มยำซุปน้ำข้น หอมกลิ่นข่า ตะไคร้ ใบมะกรูด และพริกขี้หนูสด ควบคู่กุ้งแม่น้ำตัวโต',
+        softpower: 'เสนอชื่อเข้าสู่มรดก UNESCO',
+        ingredients: ['กุ้งแม่น้ำสด', 'ข่า, ตะไคร้, ใบมะกรูด', 'น้ำพริกเผา', 'นมข้นจืด/กะทิ', 'มะนาวสด & พริกขี้หนู'],
+        history: 'ต้มยำกุ้งถือเป็นตัวแทนของอาหารไทยประเภทต้ม มีจุดเด่นที่การนำสมุนไพรพื้นบ้านมาปรุงเป็นต้มยำที่มีสรรพคุณทางยา ช่วยขับลมและเพิ่มความสดชื่น'
+      },
+      {
+        id: 'padthai',
+        name: 'ผัดไทยกุ้งสด (Pad Thai)',
+        category: 'fry',
+        flavor: 'เค็ม',
+        spice: '🌶️ (เผ็ดน้อย)',
+        image: '', // หากยังไม่มีรูป สามารถเว้นว่างไว้ก่อนได้ (ระบบจะแสดงไอคอนสำรอง)
+        image: 'Pad Thai.jpg',
+        desc: 'เส้นจันทน์เหนียวนุ่ม ผัดซอสมะขามเปียกสูตรโบราณ รสชาติกลมกล่อม หวานอมเปรี้ยว เสิร์ฟพร้อมกุ้งสด ถั่วงอก และเต้าหู้เหลือง',
+        softpower: 'เมนูยอดนิยมอันดับ 1 ในต่างประเทศ',
+        ingredients: ['เส้นจันทน์', 'ซอสมะขามเปียก', 'กุ้งสด & เต้าหู้เหลือง', 'ไข่ไก่ & ถั่วลิสงบด', 'กุ้ยช่าย & ถั่วงอก'],
+        history: 'ผัดไทยได้รับการส่งเสริมในสมัยจอมพล ป. พิบูลสงคราม เพื่อสร้างเอกลักษณ์ความเป็นชาติและลดการบริโภคข้าว จนกลายเป็นสตรีทฟู้ดชื่อดังระดับโลก'
+      },
+      {
+        id: 'massaman',
+        name: 'แกงมัสมั่น (Massaman Curry)',
+        category: 'soup',
+        flavor: 'หวาน',
+        spice: '🌶️ (เผ็ดน้อย-กลมกล่อม)',
+        image: '',
+        image: 'Massaman Curry.jpg',
+        desc: 'แกงรสเข้มข้นหอมเครื่องเทศอินเดียผสมผสานกับวัตถุดิบไทย เคี่ยวกับกะทิ เนื้อนุ่ม ละมุนลิ้น ผสานความมันของถั่วลิสง',
+        softpower: 'CNN Travel ยกให้เป็น World #1 Dish',
+        ingredients: ['พริกแกงมัสมั่น', 'เนื้อน่องลาย หรือ ไก่', 'กะทิสด', 'มันฝรั่ง & หอมใหญ่', 'ถั่วลิสงคั่ว'],
+        history: 'รับอิทธิพลมาจากเปอร์เซียและมุสลิมในสมัยอยุธยา มีชื่อเสียงมายาวนานและได้รับคำชมในบทกาพย์เห่เรือชมเครื่องคาวหวาน'
+      },
+      {
+        id: 'somtum',
+        name: 'ส้มตำไทย (Som Tum)',
+        category: 'salad',
+        flavor: 'เผ็ด',
+        spice: '🌶️🌶️🌶️🌶️ (เผ็ดจัดจ้าน)',
+        image: '',
+       image: 'Som Tum.jpg', 
+        desc: 'ส้มตำมะละกอสับสด กรอบ ครบรสเปรี้ยว มะนาว พริกขี้หนู น้ำตาลปี๊บ โรยถั่วลิสงคั่วและกุ้งแห้งเกรดดี',
+        softpower: 'สัญลักษณ์ Street Food ไทย',
+        ingredients: ['เส้นมะละกอดิบ', 'มะเขือเทศ & ถั่วฝักยาว', 'พริกขี้หนู & กระเทียม', 'น้ำปลาแท้ & มะนาว', 'ถั่วลิสง & กุ้งแห้ง'],
+        history: 'อาหารพื้นบ้านภาคอีสานที่แพร่หลายไปทั่วประเทศและทั่วโลก ด้วยเอกลักษณ์ความสดชื่นจัดจ้าน'
+      }
+    ];
+
+    function renderDishes(items) {
+      const container = document.getElementById('dishList');
+      container.innerHTML = '';
+      if(items.length === 0) {
+        container.innerHTML = '<p style="text-align:center; color:var(--muted); padding:3rem;">ไม่พบเมนูในหมวดหมู่นี้</p>';
+        return;
+      }
+      items.forEach(dish => {
+        // เช็คว่าเมนูนี้มีรูปภาพหรือไม่ ถ้ามีให้แสดง tag img ถ้าไม่มีให้แสดง emoji สำรอง
+        const thumbContent = dish.image 
+          ? `<img src="${dish.image}" alt="${dish.name}">` 
+          : `<span style="font-size: 3.5rem;">${dish.emoji || '🍲'}</span>`;
+
+        const html = `
+          <div class="dish">
+            <div class="thumb">
+              ${thumbContent}
+            </div>
+            <div class="dish-content">
+              <div class="dish-header">
+                <h3>${dish.name}</h3>
+                <span class="tag highlight">${dish.softpower}</span>
+              </div>
+              <p class="dish-desc">${dish.desc}</p>
+              <div class="tags">
+                <span class="tag">รสชาติ: ${dish.flavor}</span>
+                <span class="tag">ความเผ็ด: ${dish.spice}</span>
+              </div>
+              <div class="dish-action">
+                <button class="btn-detail" onclick="openDishModal('${dish.id}')">
+                  ดูวัตถุดิบและเรื่องราว <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+        container.innerHTML += html;
+      });
+    }
+
+    // ฟังก์ชันอื่นๆ คงเดิม...
+    function filterDishes(category, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      if(category === 'all') {
+        renderDishes(dishesData);
+      } else {
+        renderDishes(dishesData.filter(d => d.category === category));
+      }
+    }
+
+    function filterByFlavor(flavorName) {
+      document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      renderDishes(dishesData.filter(d => d.flavor === flavorName));
+    }
+
+    function randomizeDish() {
+      const random = dishesData[Math.floor(Math.random() * dishesData.length)];
+      const resBox = document.getElementById('randomResult');
+      resBox.style.display = 'block';
+      document.getElementById('randomTitle',).innerText = `${random.emoji || ''} ${random.name}`;
+      document.getElementById('randomDesc').innerText = random.desc;
+      document.getElementById('randomTags').innerHTML = `<span class="tag highlight">${random.softpower}</span><span class="tag">รส ${random.flavor}</span>`;
+    }
+
+    function openDishModal(id) {
+      const dish = dishesData.find(d => d.id === id);
+      if(!dish) return;
+      const modalHTML = `
+        <h3>${dish.name}</h3>
+        <p>${dish.desc}</p>
+        <div class="tags" style="margin-bottom: 12px;">
+          <span class="tag highlight">${dish.softpower}</span>
+          <span class="tag">รสชาติหลัก: ${dish.flavor}</span>
+        </div>
+        <p><b>ความเป็นมา:</b> ${dish.history}</p>
+        <div class="modal-ingredients">
+          <h4><i class="fa-solid fa-basket-shopping"></i> วัตถุดิบหลักสำคัญ:</h4>
+          <ul>
+            ${dish.ingredients.map(ing => `<li>${ing}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+      document.getElementById('modalContent').innerHTML = modalHTML;
+      document.getElementById('dishModal').style.display = 'grid';
+    }
+
+    function closeModal() {
+      document.getElementById('dishModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('dishModal');
+      if (event.target === modal) {
+        closeModal();
+      }
+    }
+
+    renderDishes(dishesData);
+  </script>
+</body>
+</html>
